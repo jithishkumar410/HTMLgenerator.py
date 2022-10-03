@@ -4,25 +4,11 @@ class Site:
     def __init__(self,fname):
         self.fname=fname
         self.comf=fname+".html"
+        self.file = open(self.comf, 'w+')
 
-        file=open(self.comf,'w+')
 
-        file.write("""
-        <!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<h1>Welcome html framework</h1>
-</body>
-</html>
 
-""")
+
 ########################################################################################################
     def clean(self):
         self.file = open(self.comf, 'w+')
@@ -54,7 +40,7 @@ class Site:
         file.write(f"<h1>Hello {nam}</h1>")
 ########################################################################################################
     def table(self):
-        self.clean()
+
         self.row =""
         self.col =""
         self.coll=""
@@ -75,23 +61,7 @@ class Site:
 
         self.file = open(self.comf, 'a')
 
-        self.file.write(f"""
-                <!doctype html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport"
-                  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-            <meta http-equiv="X-UA-Compatible" content="ie=edge">
-            
-            <title>Document</title>
-        </head>
-        <body>
-        {self.table}
-        </body>
-        </html>
-
-        """)
+        self.file.write(f"""{self.table}""")
 #############################################################################################################################3
     def tablecb(self):
         self.clean()
@@ -122,30 +92,14 @@ class Site:
 
 
         if self.row != "" and self.coll != "":
-            self.table = f'''<table style="border:1px solid black;"><tr>{self.row}</tr><tr>{self.coll}</tr></table>'''
+            self.table = f'''\n<table style="border:1px solid black;">\n<tr>{self.row}</tr><tr>{self.coll}</tr>\n</table>\n'''
 
         self.file = open(self.comf, 'a')
 
-        self.file.write(f"""
-                   <!doctype html>
-           <html lang="en">
-           <head>
-               <meta charset="UTF-8">
-               <meta name="viewport"
-                     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-               <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-               <title>Document</title>
-           </head>
-           <body>
-           {self.table}
-           </body>
-           </html>
-
-           """)
+        self.file.write(f"""{self.table}""")
 ################################################################################################################################
     def tablebh(self):
-        self.clean()
+
         self.row = ""
         self.col = ""
         self.coll =""
@@ -167,28 +121,33 @@ class Site:
             self.col = ""
 
 
-        self.table = f'''<table style="border:1px solid black;"><tr>{self.row}</tr><tr>{self.coll}</tr></table>'''
+        self.table = f'''\n<table style="border:1px solid black;">\n<tr>{self.row}</tr><tr>{self.coll}</tr>\n</table>'''
 
         self.file = open(self.comf, 'a')
 
-        self.file.write(f"""
-                        <!doctype html>
-                <html lang="en">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport"
-                          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-                    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        self.file.write(f"""{self.table}""")
+##################################################################################################################################
+    def finish(self):
+        self.file = open(self.comf, 'a')
 
-                    <title>Document</title>
-                </head>
-                <body>
-                {self.table}
-                </body>
-                </html>
+        self.file.write(f""" 
+        </body>
+        </html>
 
                 """)
-##################################################################################################################################
+    def start(self):
+        self.file = open(self.comf, 'a')
+
+        self.file.write(f"""
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PTML</title>
+    </head>
+    <body>"""                      )
     def tablecbl(self):
         self.clean()
         self.row = ""
@@ -199,7 +158,7 @@ class Site:
         for i in range(self.a+1):
             if i == 0:
 
-                self.row = self.row + f''' <th class="row{i}" style="border:1px solid black;font-size:1.5rem"><th>\n'''
+                self.row = self.row + f''' \n<th class="row{i}" style="border:1px solid black;font-size:1.5rem"><th>\n'''
             else:
                 self.rowdata = input(f"Enter the row head {i}:")
                 self.row = self.row + f''' <th class="row{i}" style="border:1px solid black;font-size:1.5rem">{self.rowdata}<th>\n'''
@@ -219,30 +178,16 @@ class Site:
 
         self.file = open(self.comf, 'a')
 
-        self.file.write(f"""
-                                    <!doctype html>
-                            <html lang="en">
-                            <head>
-                                <meta charset="UTF-8">
-                                <meta name="viewport"
-                                      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-                                <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-                                <title>Document</title>
-                            </head>
-                            <body>
-                            {self.table}
-                            </body>
-                            </html>
-
-                            """)
+        self.file.write(f"""{self.table}""")
 ################################################################################################################################
 
     def check(self):
         w.open(self.comf)
 ###################################################################################################################################
 s=Site("fht")
+s.start()
 s.tablebh()
+s.finish()
 
 
 
@@ -250,6 +195,5 @@ s.tablebh()
 
 
 s.check()
-
 
 
